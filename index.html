@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dealer Intelligence Platform</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --panel:#111;
+  --border:#222;
+  --red:#ff0000;
+  --text:#fff;
+  --muted:#aaa;
+}
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* SIDEBAR */
+.sidebar{
+  position:fixed;
+  width:240px;
+  height:100vh;
+  background:#070707;
+  border-right:1px solid var(--border);
+  padding:20px;
+}
+
+.logo{height:38px;margin-bottom:20px;}
+
+.nav{
+  padding:10px;
+  margin:6px 0;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:6px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.nav.active{border-color:var(--red);}
+
+/* MAIN */
+.main{
+  margin-left:260px;
+  padding:24px;
+}
+
+/* HEADER */
+<div class="header">
+
+  <div class="left">
+    <div class="title">Dealer Intelligence Platform</div>
+  </div>
+
+  <div class="right">
+    <select>
+      <option>RamJet Racing</option>
+      <option>Buddy Stubbs</option>
+    </select>
+
+    <!-- TOP RIGHT LOGO -->
+    <img src="harddrive-logo.png" class="logo-right" />
+  </div>
+
+</div>
+}
+
+.title{font-size:18px;}
+
+/* SECTIONS */
+.section{display:none;}
+.section.active{display:block;}
+
+/* KPI */
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.kpi{
+  background:var(--panel);
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+
+.kpi-value{
+  color:var(--red);
+  font-size:22px;
+  margin-top:6px;
+}
+
+/* PANELS */
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px;
+  margin-top:15px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:12px;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid #1a1a1a;
+  font-size:13px;
+}
+
+th{color:var(--muted);text-align:left;}
+
+.good{color:var(--red);}
+.warn{color:#aaa;}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <img src="hd-white.png" class="logo"/>
+
+  <div class="nav active" onclick="showTab('dashboard')">Dashboard</div>
+  <div class="nav" onclick="showTab('sales')">Sales</div>
+  <div class="nav" onclick="showTab('brands')">Brand Intelligence</div>
+  <div class="nav" onclick="showTab('inventory')">Inventory Gaps</div>
+  <div class="nav" onclick="showTab('tc')">TC Status</div>
+  <div class="nav" onclick="showTab('opps')">Opportunities</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="header">
+    <div class="title">Dealer Intelligence Platform</div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="section active">
+
+    <div class="kpi-grid">
+
+      <div class="kpi">
+        YTD SALES
+        <div class="kpi-value">$152,430</div>
+      </div>
+
+      <div class="kpi">
+        MONTHLY SALES
+        <div class="kpi-value">$18,220</div>
+      </div>
+
+      <div class="kpi">
+        TC STATUS
+        <div class="kpi-value">ACTIVE</div>
+      </div>
+
+      <div class="kpi">
+        OPPORTUNITY SCORE
+        <div class="kpi-value">72</div>
+      </div>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="panel">
+        <h3>Sales Trend (6 Months)</h3>
+        <canvas id="chart"></canvas>
+      </div>
+
+      <div class="panel">
+        <h3>Dealer Snapshot</h3>
+        <p><b>Location:</b> Arizona</p>
+        <p><b>Open Credit:</b> $48,000</p>
+        <p><b>Avg Order Value:</b> $1,240</p>
+        <p><b>Fill Rate:</b> 87%</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SALES TAB -->
+  <div id="sales" class="section">
+
+    <div class="panel">
+      <h3>Sales Performance Breakdown</h3>
+      <p><b>Total Orders:</b> 412</p>
+      <p><b>Avg Weekly Orders:</b> 19.8</p>
+      <p><b>Top Category:</b> Tires (38%)</p>
+      <p><b>Growth YoY:</b> +12.4%</p>
+    </div>
+
+    <div class="panel">
+      <h3>Top SKUs</h3>
+      <table>
+        <tr><th>SKU</th><th>Product</th><th>Qty</th><th>Revenue</th></tr>
+        <tr><td>SHK777</td><td>Shinko Tire</td><td>420</td><td>$58,200</td></tr>
+        <tr><td>ABK112</td><td>All Balls Kit</td><td>180</td><td>$22,400</td></tr>
+        <tr><td>VTX990</td><td>Vertex Kit</td><td>95</td><td>$14,100</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- BRANDS -->
+  <div id="brands" class="section">
+
+    <div class="panel">
+      <h3>Brand Penetration Analysis</h3>
+
+      <table>
+        <tr><th>Brand</th><th>Share</th><th>Status</th></tr>
+        <tr><td>Shinko</td><td>38%</td><td class="good">Dominant</td></tr>
+        <tr><td>All Balls</td><td>22%</td><td>Stable</td></tr>
+        <tr><td>Hot Cams</td><td>12%</td><td class="warn">Underpenetrated</td></tr>
+        <tr><td>Vertex</td><td>8%</td><td class="warn">Opportunity</td></tr>
+      </table>
+
+    </div>
+
+  </div>
+
+  <!-- INVENTORY -->
+  <div id="inventory" class="section">
+
+    <div class="panel">
+      <h3>Inventory Gap Report</h3>
+
+      <p><b>Missing High Velocity SKUs:</b> 14</p>
+      <p><b>Lost Opportunity Value:</b> $28,900</p>
+      <p><b>Backorder Frequency:</b> 6.2%</p>
+      <p><b>Fill Efficiency:</b> 87%</p>
+
+    </div>
+
+    <div class="panel">
+      <h3>Top Missing Products</h3>
+      <p>• Hot Cams Cam Chain Kit</p>
+      <p>• Vertex Piston Kit 450</p>
+      <p>• Pivot Works Bearing Kit</p>
+    </div>
+
+  </div>
+
+  <!-- TC -->
+  <div id="tc" class="section">
+
+    <div class="panel">
+      <h3>TC Risk Overview</h3>
+
+      <p><b>Credit Limit:</b> $125,000</p>
+      <p><b>Used:</b> $77,000 (62%)</p>
+      <p><b>Payment History:</b> On Time (96%)</p>
+      <p><b>Risk Score:</b> LOW</p>
+
+    </div>
+
+  </div>
+
+  <!-- OPPORTUNITIES -->
+  <div id="opps" class="section">
+
+    <div class="panel">
+      <h3>Opportunity Engine</h3>
+
+      <p><b>Upside Revenue Potential:</b> $42,300</p>
+      <p><b>Recommended SKUs:</b> 27</p>
+      <p><b>High Priority Brands:</b> Vertex, Hot Cams</p>
+      <p><b>Next Action:</b> Expand engine kit penetration</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+function showTab(tab){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+
+  document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+new Chart(document.getElementById('chart'), {
+  type:'line',
+  data:{
+    labels:['Jan','Feb','Mar','Apr','May','Jun'],
+    datasets:[{
+      label:'Sales',
+      data:[12000,15000,13000,17000,16000,18220],
+      borderColor:'#ff0000',
+      tension:0.3
+    }]
+  },
+  options:{plugins:{legend:{display:false}}}
+});
+
+</script>
+
+</body>
+</html>
