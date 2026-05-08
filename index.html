@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RamJet Racing Dealer Intelligence</title>
+
+<style>
+
+:root{
+  --bg:#050505;
+  --panel:#111;
+  --border:#222;
+  --text:#fff;
+  --muted:#9a9a9a;
+  --red:#ff2b2b;
+  --redSoft:#3a0d0d;
+  --green:#2cff7a;
+  --yellow:#ffcc00;
+}
+
+body{
+  margin:0;
+  font-family:system-ui;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.header{
+  padding:20px 28px;
+  border-bottom:1px solid var(--border);
+}
+
+.title{font-size:20px;font-weight:600;}
+.sub{font-size:12px;color:var(--muted);}
+
+.tabs{
+  display:flex;
+  gap:10px;
+  padding:14px 28px;
+  flex-wrap:wrap;
+}
+
+.tab-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid #5a1a1a;
+  background:var(--redSoft);
+  color:#fff;
+  cursor:pointer;
+  font-size:12px;
+}
+
+.tab-btn.active{background:var(--red);}
+
+.content{padding:0 28px 30px;}
+.tab{display:none;}
+.tab.active{display:block;}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  margin-top:14px;
+}
+
+.card-title{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.item{
+  padding:10px 0;
+  border-bottom:1px solid #1a1a1a;
+}
+
+.line{
+  display:flex;
+  justify-content:space-between;
+}
+
+.left{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.code{color:var(--muted);font-size:12px;min-width:120px;}
+.div{width:2px;height:14px;background:#333;}
+.name{font-size:13px;}
+.green{color:var(--green);}
+.red{color:var(--red);}
+
+/* ORDER */
+.order{
+  border:1px solid var(--red);
+  background:rgba(255,43,43,0.08);
+}
+
+/* TRIPLE CROWN BADGE */
+.active-badge {
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(44,255,122,0.12);
+  border:1px solid var(--green);
+  color:var(--green);
+  font-size:11px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .tabs{overflow-x:auto;flex-wrap:nowrap;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<div class="title">RamJet Racing Dealer Intelligence</div>
+<div class="sub">Executive SKU Intelligence System</div>
+</div>
+
+<div class="tabs">
+<button class="tab-btn active" onclick="show(0)">Dashboard</button>
+<button class="tab-btn" onclick="show(1)">Growth</button>
+<button class="tab-btn" onclick="show(2)">Core</button>
+<button class="tab-btn" onclick="show(3)">Stable</button>
+<button class="tab-btn" onclick="show(4)">Risk</button>
+<button class="tab-btn" onclick="show(5)">New / Lost</button>
+</div>
+
+<div class="content">
+
+<!-- ================= DASHBOARD ================= -->
+<div class="tab active">
+
+<div class="card">
+<div class="card-title">Executive Snapshot</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">2025</div><span class="div"></span><div class="name">$65,668.68</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">2026</div><span class="div"></span><div class="name red">$51,972.07</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">YOY</div><span class="div"></span><div class="name red">-20.9%</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">ROLLING 12</div><span class="div"></span><div class="name">$134,735.98</div></div></div></div>
+
+</div>
+
+<!-- ================= TRIPLE CROWN PROGRAM ================= -->
+<div class="card">
+<div class="card-title">Triple Crown Program</div>
+
+<div class="item">
+<div class="line">
+<div class="left">
+<div class="code">STATUS</div>
+<span class="div"></span>
+<div class="name active-badge">TRIPLE CROWN ACTIVE MEMBER</div>
+</div>
+</div>
+</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">FREIGHT</div><span class="div"></span><div class="name">$50 Minimum Order</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">FIELD CREDIT</div><span class="div"></span><div class="name">-$400 Destroy in Field</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">TERM</div><span class="div"></span><div class="name">Return Allowance: 12 Months</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">SUPPORT</div><span class="div"></span><div class="name">Help Phone Support: YES</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">APPAREL</div><span class="div"></span><div class="name">30% Return on Buy-In</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">OPEN HOUSE</div><span class="div"></span><div class="name">$500 Minimum (Exclusive Brands Only)</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">LOYALTY</div><span class="div"></span><div class="name">2% Sales Growth Credit (Min 10% Annual Growth)</div></div></div></div>
+
+</div>
+
+<div class="card order">
+<div class="card-title">Suggested Order (Full Execution)</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">822-1001</div><span class="div"></span><div class="name">ENGINE OIL 20W50 → 325</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">822-1041</div><span class="div"></span><div class="name">FULL SYN 20W50 → 500</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">822-1053</div><span class="div"></span><div class="name">PRIMARY OIL → 275</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">822-1052</div><span class="div"></span><div class="name">TRANSMISSION OIL → 175</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">133-3014</div><span class="div"></span><div class="name">DYNA 2000I → 5</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">133-3005</div><span class="div"></span><div class="name">DYNA 2000 TC → 5</div></div></div></div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">15-409H</div><span class="div"></span><div class="name">BRAKE PADS FA409HH → 100</div></div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">15-400H</div><span class="div"></span><div class="name">BRAKE PADS FA400HH → 80</div></div></div></div>
+
+</div>
+
+</div>
+
+<!-- ================= TAB 1 GROWTH ================= -->
+<div class="tab">
+<div class="card">
+<div class="card-title">Top Opportunities</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">133-3014</div><span class="div"></span><div class="name">DYNA 2000I CARB MODULE</div></div><div class="green">+1356%</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">820-51355</div><span class="div"></span><div class="name">FRONT AXLE KIT</div></div><div class="green">+998%</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">68-9131</div><span class="div"></span><div class="name">INTAKE SEAL</div></div><div class="green">+613%</div></div></div>
+
+</div>
+</div>
+
+<!-- ================= TAB 2 CORE ================= -->
+<div class="tab">
+<div class="card">
+<div class="card-title">Core Volume</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">822-1041</div><span class="div"></span><div class="name">FULL SYN OIL</div></div><div>492</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">822-1001</div><span class="div"></span><div class="name">ENGINE OIL</div></div><div>300</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">822-1053</div><span class="div"></span><div class="name">PRIMARY OIL</div></div><div>277</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">15-409H</div><span class="div"></span><div class="name">BRAKE PADS</div></div><div>83</div></div></div>
+
+</div>
+</div>
+
+<!-- ================= TAB 3 STABLE ================= -->
+<div class="tab">
+<div class="card">
+<div class="card-title">Stable Items</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">14-1997</div><span class="div"></span><div class="name">HSR CARB KIT</div></div><div>+11%</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">273-1402</div><span class="div"></span><div class="name">STATOR</div></div><div class="green">+51%</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">122-8220</div><span class="div"></span><div class="name">MINI BOARDS</div></div><div>+5%</div></div></div>
+
+</div>
+</div>
+
+<!-- ================= TAB 4 RISK ================= -->
+<div class="tab">
+<div class="card">
+<div class="card-title">Declining Items</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">14-1988</div><span class="div"></span><div class="name">CARB KIT</div></div><div class="red">-83%</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">26-20006</div><span class="div"></span><div class="name">STARTER MOTOR</div></div><div class="red">-81%</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">273-1418</div><span class="div"></span><div class="name">STATOR</div></div><div class="red">-49%</div></div></div>
+
+</div>
+</div>
+
+<!-- ================= TAB 5 NEW ================= -->
+<div class="tab">
+<div class="card">
+<div class="card-title">New / Lost</div>
+
+<div class="item"><div class="line"><div class="left"><div class="code">17-DU003</div><span class="div"></span><div class="name">ROTOR FRONT</div></div><div>NEW</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">133-4204</div><span class="div"></span><div class="name">POWER COMMANDER</div></div><div class="red">LOST</div></div></div>
+<div class="item"><div class="line"><div class="left"><div class="code">57-6531</div><span class="div"></span><div class="name">MOTOR OIL</div></div><div class="red">LOST</div></div></div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+function show(i){
+let tabs=document.querySelectorAll(".tab");
+let btn=document.querySelectorAll(".tab-btn");
+
+tabs.forEach(t=>t.classList.remove("active"));
+btn.forEach(b=>b.classList.remove("active"));
+
+tabs[i].classList.add("active");
+btn[i].classList.add("active");
+}
+</script>
+
+</body>
+</html>
